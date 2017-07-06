@@ -16,7 +16,7 @@ public class SupplierApplication {
 	}
 	
 	@Bean
-	public Supplier<Flux<String>> getEvents(){
+	public Supplier<Flux<String>> getValue(){
 		return () -> {
 			return Flux.just(String.valueOf(Math.random()));
 		};

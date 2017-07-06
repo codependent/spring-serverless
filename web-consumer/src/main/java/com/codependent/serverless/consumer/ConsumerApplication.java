@@ -22,7 +22,9 @@ public class ConsumerApplication {
 	@Bean
 	public Consumer<Flux<String>> consume(){
 		return (Flux<String> consume) -> {
-			logger.info("Got {}", consume);
+			consume.subscribe( (value) -> {
+				logger.info("Got {}", value);
+			});
 		};
 	}
 	
