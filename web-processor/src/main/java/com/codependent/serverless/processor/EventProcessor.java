@@ -23,11 +23,6 @@ import reactor.core.publisher.Flux;
 
 public class EventProcessor implements Function<Flux<String>, Flux<String>> {
 
-	public EventProcessor(){
-		System.out.println("EventProcessor");
-	}
-	
-	
 	public Flux<String> apply(Flux<String> name) {
 		return name.map( n -> n + " processed at " + new Date().toString());
 	}

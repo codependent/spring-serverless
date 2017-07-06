@@ -18,8 +18,7 @@ public class SupplierApplication {
 	@Bean
 	public Supplier<Flux<String>> getEvents(){
 		return () -> {
-			//TODO Read from queue
-			return Flux.empty();
+			return Flux.just(String.valueOf(Math.random()));
 		};
 	}
 }
