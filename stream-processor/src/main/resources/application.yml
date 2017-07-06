@@ -1,0 +1,8 @@
+spring:
+  cloud:
+    function:
+      scan:
+        packages: com.codependent.serverless.processor 
+
+server:
+  port: 8181
