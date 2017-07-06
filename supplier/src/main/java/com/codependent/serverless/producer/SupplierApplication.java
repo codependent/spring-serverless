@@ -6,6 +6,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import reactor.core.publisher.Flux;
+
 @SpringBootApplication
 public class SupplierApplication {
 
@@ -14,10 +16,10 @@ public class SupplierApplication {
 	}
 	
 	@Bean
-	public Supplier<String> getEvents(){
+	public Supplier<Flux<String>> getEvents(){
 		return () -> {
 			//TODO Read from queue
-			return null;
+			return Flux.empty();
 		};
 	}
 }

@@ -19,14 +19,16 @@ package com.codependent.serverless.processor;
 import java.util.Date;
 import java.util.function.Function;
 
-public class EventProcessor implements Function<String, String> {
+import reactor.core.publisher.Flux;
+
+public class EventProcessor implements Function<Flux<String>, Flux<String>> {
 
 	public EventProcessor(){
 		System.out.println("EventProcessor");
 	}
 	
 	
-	public String apply(String name) {
-		return name + " processed at " + new Date().toString();
+	public Flux<String> apply(Flux<String> name) {
+		return name.map( n -> n + " processed at " + new Date().toString());
 	}
 }

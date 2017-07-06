@@ -6,6 +6,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import reactor.core.publisher.Flux;
+
 @SpringBootApplication
 public class ConsumerApplication {
 
@@ -14,8 +16,8 @@ public class ConsumerApplication {
 	}
 	
 	@Bean
-	public Consumer<String> registerEvent(){
-		return (String event) -> {
+	public Consumer<Flux<String>> registerEvent(){
+		return (Flux<String> event) -> {
 			System.out.println(event);
 			//TODO send to transformer;
 		};
