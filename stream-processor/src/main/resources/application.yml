@@ -3,6 +3,12 @@ spring:
     function:
       scan:
         packages: com.codependent.serverless.processor 
+    stream:
+      bindings:
+        input:
+          destination: raw-events
+        output: 
+          destination: processed-events
 
 server:
   port: 8181

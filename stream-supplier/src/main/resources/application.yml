@@ -1,2 +1,12 @@
+spring:
+  application:
+    name: supplier
+
+  cloud:
+    stream:
+      bindings:
+        output:
+          destination: raw-events
+
 server:
   port: 8282
