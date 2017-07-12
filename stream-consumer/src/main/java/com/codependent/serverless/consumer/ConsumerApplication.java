@@ -1,5 +1,6 @@
 package com.codependent.serverless.consumer;
 
+import java.util.Map;
 import java.util.function.Consumer;
 
 import org.slf4j.Logger;
@@ -20,8 +21,8 @@ public class ConsumerApplication {
 	}
 	
 	@Bean
-	public Consumer<Flux<String>> consume(){
-		return (Flux<String> consume) -> {
+	public Consumer<Flux<Map<String, Object>>> consume(){
+		return (Flux<Map<String, Object>> consume) -> {
 			consume.subscribe( (value) -> {
 				logger.info("Got {}", value);
 			});

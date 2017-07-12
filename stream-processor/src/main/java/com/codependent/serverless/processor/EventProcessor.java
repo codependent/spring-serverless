@@ -17,6 +17,7 @@
 package com.codependent.serverless.processor;
 
 import java.util.Date;
+import java.util.Map;
 import java.util.function.Function;
 
 import org.slf4j.Logger;
@@ -24,12 +25,12 @@ import org.slf4j.LoggerFactory;
 
 import reactor.core.publisher.Flux;
 
-public class EventProcessor implements Function<Flux<String>, Flux<String>> {
+public class EventProcessor implements Function<Flux<Map<String, Object>>, Flux<Map<String, Object>>> {
 
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	
-	public Flux<String> apply(Flux<String> name) {
-		return name.map( n -> n + " processed at " + new Date().toString())
+	public Flux<Map<String, Object>> apply(Flux<Map<String, Object>> event) {
+		return event.map( e -> {e.put("processingTime", new Date()); return e;})
 				.doOnNext( val-> logger.info("*** {} ***", val));
 	}
 }
